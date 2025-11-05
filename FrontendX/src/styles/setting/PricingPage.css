@@ -1,0 +1,193 @@
+/* PricingPage.css */
+.pricing-container {
+    min-height: 100vh;
+    background-color: #f3f4f6;
+    padding: 2rem;
+  }
+  
+  .pricing-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .pricing-title {
+    font-size: 1.875rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #1f2937;
+  }
+  
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+  }
+  
+  @media (min-width: 768px) {
+    .pricing-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .pricing-card {
+    position: relative;
+    background-color: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-header {
+    height: 6rem;
+    width: 100%;
+  }
+  
+  .basic-header {
+    background: linear-gradient(to right, #8b5cf6, #6366f1);
+  }
+  
+  .standard-header {
+    background: linear-gradient(to right, #ec4899, #f97316, #facc15);
+  }
+  
+  .premium-header {
+    background: linear-gradient(to right, #3b82f6, #2dd4bf, #4ade80);
+  }
+  
+  .plan-label {
+    position: absolute;
+    top: 4rem;
+    left: 2rem;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    color: white;
+  }
+  
+  .plan-label-basic {
+    background: linear-gradient(to right, #8b5cf6, #6366f1);
+  }
+  
+  .plan-label-standard {
+    background: linear-gradient(to right, #ec4899, #f97316, #facc15);
+  }
+  
+  .plan-label-premium {
+    background: linear-gradient(to right, #3b82f6, #2dd4bf, #4ade80);
+  }
+  
+  .plan-name {
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+  
+  .plan-period {
+    font-size: 0.75rem;
+    text-align: center;
+  }
+  
+  .features-list {
+    padding-top: 4rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 1.5rem;
+    background-color: white;
+    background-image: radial-gradient(circle, #f0f0f0 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: 0 0;
+  }
+  
+  .feature-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .feature-included {
+    color: #10b981;
+    margin-right: 0.5rem;
+  }
+  
+  .feature-excluded {
+    color: #ef4444;
+    margin-right: 0.5rem;
+  }
+  
+  .feature-text {
+    color: #6b7280;
+  }
+  
+  .price {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+  
+  .price-basic {
+    color: #6366f1;
+  }
+  
+  .price-standard {
+    background: linear-gradient(to right, #ec4899, #f97316, #facc15);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .price-premium {
+    background: linear-gradient(to right, #3b82f6, #2dd4bf, #4ade80);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .buy-button {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-weight: bold;
+    color: white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .buy-button-basic {
+    background-color: #6366f1;
+  }
+  
+  .buy-button-basic:hover {
+    background-color: #4f46e5;
+  }
+  
+  .buy-button-standard {
+    background: linear-gradient(to right, #ec4899, #f97316, #facc15);
+  }
+  
+  .buy-button-standard:hover {
+    opacity: 0.9;
+  }
+  
+  .buy-button-premium {
+    background: linear-gradient(to right, #3b82f6, #2dd4bf, #4ade80);
+  }
+  
+  .buy-button-premium:hover {
+    opacity: 0.9;
+  }
+  
+  .gateway-section {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .gateway-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .gateway-text {
+    color: #6b7280;
+  }

@@ -1,0 +1,351 @@
+    /* background: linear-gradient(to bottom, #1E3A8A, #1E40AF); */
+    .settings-container {
+      max-width: 100%;
+      margin: auto;
+      padding: 16px;
+      background: linear-gradient(to bottom, #0d6eab, #1e2c89);
+      color: white;
+      /* border-radius: 12px; */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+  
+    .settings-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 24px;
+      position: relative;
+    }
+    
+    .back-button-s {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      left: 0;
+    }
+    
+    .settings-title {
+      flex: 1;
+      font-size: 22px;
+      font-weight: 600;
+      /* color: #111827; */
+      text-align: left;
+      margin: 0;
+      margin-left: 40px;
+    }
+    
+    .settings-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .setting-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    
+    .setting-item:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+  
+    button.setting-item:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    
+    .toggle-setting {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+    }
+    
+    .logout-button {
+      width: 100%;
+      background: #DC2626;
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+    
+    .logout-button:hover {
+      background: #B91C1C;
+    }
+    
+    .delete-button {
+      width: 100%;
+      background: #374151;
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+    
+    .delete-button:hover {
+      background: #1F2937;
+    }
+  
+    /* toggle button------------------------------------------- */
+  
+  
+  .toggle-item {
+    justify-content: space-between;
+  }
+  
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 30px;
+  }
+  
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: .4s;
+    border-radius: 34px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  .toggle-switch input:checked + .slider {
+    background-color: #4cd964;
+  }
+  
+  .toggle-switch input:checked + .slider:before {
+    transform: translateX(20px);
+  }
+  
+  /* -----------------------logout accout delete--- */
+  
+  .logout {
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  .delete-account {
+    color: #dc3545;
+    font-weight: bold;
+  }
+  
+  .delete-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    
+  }
+  
+  .delete-modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    color: #374151;
+  }
+  
+  .delete-modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .cancel-button, .confirm-delete-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .cancel-button {
+    background-color: #f0f0f0;
+    color: black;
+  }
+  
+  .confirm-delete-button {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  
+  .settings-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+  }
+  
+  .logout-button {
+    background-color: #f3f4f6;
+    color: #4b5563;
+  }
+  
+  .logout-button:hover {
+    background-color: #e5e7eb;
+  }
+  
+  .delete-button {
+    background-color: #fee2e2;
+    color: #ef4444;
+  }
+  
+  .delete-button:hover {
+    background-color: #fecaca;
+  }
+  
+  /* Delete account modal */
+  .delete-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .delete-modal {
+    width: 90%;
+    max-width: 400px;
+    background-color: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .delete-modal h2 {
+    color: #111827;
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  .delete-modal p {
+    color: #4b5563;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  
+  .delete-modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  
+  .cancel-button, .confirm-delete-button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+  }
+  
+  .cancel-button {
+    background-color: #f3f4f6;
+    color: #4b5563;
+  }
+  
+  .confirm-delete-button {
+    background-color: #ef4444;
+    color: white;
+  }
+  
+  .cancel-button:hover {
+    background-color: #e5e7eb;
+  }
+  
+  .confirm-delete-button:hover {
+    background-color: #dc2626;
+  }
+  
+  /* Footer styling */
+  .mpd-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
+  
+  @media (min-width: 640px) {
+    .settings-container {
+      border-radius: 16px;
+      margin-top: 24px;
+      margin-bottom: 24px;
+      min-height: auto;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  .verification-modal .modal-content input{
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    color: #374151;
+    /* width: 100%; */
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #f9fafb;
+    transition: all 0.2s;
+  
+  }

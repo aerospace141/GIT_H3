@@ -1,0 +1,123 @@
+/* ProfilePage.css */
+.profile-container-P {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f4f4f4;
+    height: 100vh;
+  }
+  
+  .profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .back-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .edit-button {
+    background: none;
+    border: none;
+    color: #007bff;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .profile-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    margin-top: 10px;
+  }
+  
+  .profile-avatar {
+    width: 120px;
+    height: 120px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .avatar-placeholder {
+    font-size: 48px;
+    color: white;
+    background-color: #007bff;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+  }
+  
+  .profile-details {
+    width: 100%;
+  }
+  
+  .profile-detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .detail-label {
+    color: #888;
+  }
+  
+  .detail-value {
+    font-weight: bold;
+  }
+  
+  .profile-input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  
+  .profile-input-group label {
+    margin-bottom: 5px;
+    color: #888;
+  }
+  
+  .profile-input-group input {
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+  }
+  
+  .profile-edit-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .cancel-button, .save-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .cancel-button {
+    background-color: #f0f0f0;
+    color: black;
+  }
+  
+  .save-button {
+    background-color: #007bff;
+    color: white;
+  }

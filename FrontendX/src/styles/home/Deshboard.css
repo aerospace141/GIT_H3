@@ -1,0 +1,381 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Mobile Performance Dashboard CSS */
+.mpd-container {
+    font-family: 'Inter', sans-serif;
+    max-width: 1480px;
+    margin: 0 auto;
+    position: relative;
+    padding-bottom: 72px; /* Space for the fixed footer */
+  }
+  
+  .mpd-header {
+    height: 60px;
+  }
+  
+  .mpd-logo-circle {
+    font-size: 12px;
+  }
+  
+  .mpd-tabs {
+    scrollbar-width: none;
+  }
+  
+  .mpd-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .mpd-tab-btn {
+    white-space: nowrap;
+    transition: all 0.3s ease;
+  }
+  
+  .mpd-stats-grid {
+    grid-template-rows: 1fr;
+  }
+  
+  .mpd-accuracy-circle circle {
+    transition: stroke-dashoffset 0.8s ease;
+  }
+  
+  .mpd-game-bar {
+    transition: width 0.8s ease;
+  }
+  
+  .mpd-progress-bar {
+    transition: width 0.8s ease;
+  }
+  
+  .mpd-history-item {
+    transition: transform 0.2s ease;
+  }
+  
+  .mpd-history-item:active {
+    transform: scale(0.98);
+  }
+  
+  .mpd-nav-btn {
+    transition: color 0.3s ease;
+  }
+  
+  .mpd-nav-btn:active {
+    opacity: 0.8;
+  }
+  
+  .mpd-chart svg {
+    overflow: visible;
+  }
+  
+  .mpd-chart path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: dash 2s ease-in-out forwards;
+  }
+  
+  @keyframes dash {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  .mpd-bar {
+    animation: grow 1s ease-out forwards;
+    transform-origin: bottom;
+    transform: scaleY(0);
+  }
+  
+  @keyframes grow {
+    to {
+      transform: scaleY(1);
+    }
+  }
+  
+  /* Dark mode specific styles */
+  @media (prefers-color-scheme: dark) {
+    .mpd-container {
+      background-color: #0f172a;
+    }
+  }
+  
+  /* Light mode override if needed */
+  @media (prefers-color-scheme: light) {
+    .mpd-container {
+      background-color: #0f172a;
+      color: white;
+    }
+  }
+
+  /* Responsive Design for Larger Screens */
+@media (min-width: 768px) {
+  .mpd-container {
+    max-width: 768px;
+    padding-bottom: 80px; /* FIXED: Added padding for fixed footer on tablet */
+  }
+  
+  .mpd-header {
+    height: 70px;
+    padding: 0 24px;
+  }
+  
+  .mpd-logo-circle {
+    height: 44px;
+    width: 44px;
+  }
+  
+  .mpd-logo-circle img,
+  .mpd-logo-circle span {
+    font-size: 16px;
+  }
+  
+  .mpd-tabs {
+    padding: 0 24px;
+  }
+  
+  .mpd-overview,
+  .mpd-history,
+  .mpd-stats {
+    padding: 24px;
+  }
+  
+  .mpd-stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  
+  .mpd-stat-card {
+    padding: 24px;
+  }
+  
+  .mpd-chart-section {
+    margin-bottom: 32px;
+  }
+  
+  .mpd-chart {
+    height: 300px;
+  }
+  
+  /* FIXED: Footer becomes FIXED at bottom on tablet (was static before) */
+  .mpd-footer {
+    position: fixed; /* Changed from static to fixed */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(30, 41, 59, 0.98);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(51, 65, 85, 0.5);
+    display: flex;
+    justify-content: space-around; /* Changed from center to space-around for even distribution */
+    align-items: center;
+    padding: 12px 16px; /* Reduced padding */
+    z-index: 40;
+  }
+  
+  .mpd-nav-btn {
+    flex-direction: column; /* Changed back to column for compact look */
+    gap: 4px; /* Reduced gap */
+    padding: 8px 12px; /* Reduced padding */
+    border-radius: 8px;
+    background: transparent; /* Transparent by default */
+    transition: all 0.3s ease;
+    min-width: auto; /* Remove min-width */
+  }
+  
+  .mpd-nav-btn:hover {
+    background: rgba(51, 65, 85, 0.6);
+    transform: translateY(-2px);
+  }
+  
+  .mpd-nav-btn span {
+    margin-top: 0;
+    font-size: 12px; /* Smaller text */
+  }
+  
+  .mpd-nav-btn svg {
+    width: 20px; /* Controlled icon size */
+    height: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mpd-container {
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 0;
+    padding-bottom: 80px; /* FIXED: Added padding for fixed footer on desktop */
+  }
+  
+  .mpd-header {
+    grid-column: 1 / -1;
+    height: 80px;
+    padding: 0 32px;
+  }
+  
+  /* Sidebar Navigation */
+  .mpd-sidebar {
+    grid-column: 1;
+    grid-row: 2;
+    background: rgba(30, 41, 59, 0.8);
+    border-right: 1px solid rgba(51, 65, 85, 0.5);
+    padding: 32px 24px;
+  }
+  
+  .mpd-main-content {
+    overflow: hidden !important;
+  }
+  
+  /* Tabs become sidebar on desktop */
+  .mpd-tabs {
+    display: none;
+  }
+  
+  .mpd-sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .mpd-sidebar-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    background: transparent;
+    border: none;
+    color: rgb(148, 163, 184);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+  }
+  
+  .mpd-sidebar-btn.active {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2));
+    color: white;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+  }
+  
+  .mpd-sidebar-btn:hover:not(.active) {
+    background: rgba(51, 65, 85, 0.5);
+    color: white;
+  }
+  
+  /* Content adjustments */
+  .mpd-overview,
+  .mpd-history, 
+  .mpd-stats {
+    padding: 0;
+  }
+  
+  .mpd-stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+  }
+  
+  .mpd-chart {
+    height: 350px;
+  }
+  
+  /* FIXED: Footer now fixed and properly spaced at bottom on desktop */
+  .mpd-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(30, 41, 59, 0.98);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(51, 65, 85, 0.5);
+    display: flex;
+    justify-content: space-around; /* Even distribution */
+    align-items: center;
+    padding: 16px 20px;
+    z-index: 40;
+    max-width: 100%; /* Full width */
+  }
+  
+  .mpd-nav-btn {
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: transparent;
+    transition: all 0.3s ease;
+    min-width: auto;
+  }
+  
+  .mpd-nav-btn:hover {
+    background: rgba(51, 65, 85, 0.7);
+    transform: translateY(-2px);
+  }
+  
+  .mpd-nav-btn span {
+    margin-top: 0;
+    font-size: 13px;
+  }
+  
+  .mpd-nav-btn svg {
+    width: 22px;
+    height: 22px;
+  }
+  
+  /* Enhanced cards */
+  .mpd-stat-card,
+  .mpd-history-item,
+  .mpd-game-types-chart {
+    border: 1px solid rgba(51, 65, 85, 0.3);
+    backdrop-filter: blur(10px);
+  }
+  
+  /* Chart improvements */
+  .mpd-chart-section {
+    margin-bottom: 40px;
+  }
+  
+  .mpd-section-title {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .mpd-container {
+    max-width: 1600px;
+    grid-template-columns: 320px 1fr;
+  }
+  
+  .mpd-main-content {
+    padding: 40px;
+  }
+  
+  .mpd-stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+  }
+  
+  .mpd-chart {
+    height: 400px;
+  }
+
+  /* FIXED: Centered footer on large screens too */
+  .mpd-footer {
+    justify-content: space-around;
+    padding: 16px 24px;
+  }
+  
+  .mpd-nav-btn {
+    padding: 12px 18px;
+  }
+  
+  .mpd-nav-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .mpd-nav-btn span {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,174 @@
+:root {
+  --deep-blue: #0A0A2B;
+  --bright-blue: #0A0A79;
+  --white: #FFFFFF;
+}
+
+.Login_page {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: var(--deep-blue);
+}
+
+.auth-container_signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+  background: linear-gradient(to bottom, var(--deep-blue), var(--bright-blue));
+}
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to bottom, var(--deep-blue), var(--bright-blue));
+}
+
+.auth-form {
+  width: 350px;
+  background-color: transparent;
+  text-align: center;
+}
+
+/* Company Logo Styles */
+.company-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo-circle {
+  width: 80px;
+  height: 80px;
+  background-color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.logo-circle:hover {
+  transform: scale(1.05);
+}
+
+/* Company Name Styles */
+.company-name {
+  color: var(--white);
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+  color: var(--white);
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 30px;
+  color: var(--white);
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.auth-button {
+  width: 50%;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.auth-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.auth-button:active {
+  transform: translateY(0);
+}
+
+.forgot-password {
+  color: var(--white);
+  text-decoration: none;
+  display: block;
+  margin-top: 15px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.forgot-password:hover {
+  opacity: 1;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Social login styles */
+.social-login-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.divider {
+  position: relative;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.divider span {
+  background: #fff;
+  padding: 0 15px;
+  position: relative;
+  z-index: 1;
+  font-size: 14px;
+  color: #666;
+}
+
+.divider::before {
+  content: "";
+  height: 1px;
+  width: 100%;
+  background: #ccc;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 0;
+}

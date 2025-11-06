@@ -39,7 +39,7 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
   
   // Use your existing API URL from the student app
-  const API_URL = 'http://localhost:5000/api';
+  const API_URL = process.env.REACT_APP_API_BASE_URL;
 
   const [showStudentRegistration, setShowStudentRegistration] = useState(false);
 

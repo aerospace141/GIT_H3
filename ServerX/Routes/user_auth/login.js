@@ -2,12 +2,13 @@ const express = require('express');
 const router = express.Router();
 const User = require('../../models/user');
 const jwt = require('jsonwebtoken');
-const jwtSecret = process.env.JWT_SECRET || 'anykey';
 const { authenticateUser } = require("../../middleware/authentication");
 const { OAuth2Client } = require('google-auth-library');
 const crypto = require('crypto');
 
-const client = new OAuth2Client("679832363574-9don8skic3d6n3r8geli6ippcbrip1pe.apps.googleusercontent.com");
+const jwtSecret = process.env.JWT_SECRET;
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+const client = new OAuth2Client(GOOGLE_CLIENT_ID);
 
 const generateDeviceId = () => {
   return crypto.randomBytes(32).toString('hex');
@@ -340,7 +341,7 @@ router.post('/auth/google', async (req, res) => {
     // ✅ Properly verify the token with Google's SDK
     const ticket = await client.verifyIdToken({
       idToken: token,
-      audience: "679832363574-9don8skic3d6n3r8geli6ippcbrip1pe.apps.googleusercontent.com", // Replace with your actual client ID
+      audience: GOOGLE_CLIENT_ID,
     });
     
     const payload = ticket.getPayload();

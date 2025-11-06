@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Clock, AlertTriangle, Send, Lock, Calculator } from 'lucide-react';
 
 const StudentTestComponent = ({ testId, onTestComplete, socket }) => {
-  const API_URL = 'http://localhost:5000/api';
+  const API_URL = process.env.REACT_APP_API_BASE_URL;
   
   const [testData, setTestData] = useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -1744,7 +1744,7 @@ const submitTest = async (isAutoSubmit = false, reason = '') => {
 };
 
 const TestContainer = ({ studentId, socket }) => {
-  const API_URL = 'http://localhost:5000/api';
+  const API_URL = process.env.REACT_APP_API_BASE_URL;
   const [activeTest, setActiveTest] = useState(null);
   const [showTest, setShowTest] = useState(false);
   const [testResult, setTestResult] = useState(null);

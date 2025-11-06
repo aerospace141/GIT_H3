@@ -41,7 +41,7 @@ const [lastSyncTime, setLastSyncTime] = useState(0);
 const BACKGROUND_SYNC_INTERVAL = 2 * 60 * 1000; // 2 minutes
   
   // API configuration
-  const API_URL = 'http://localhost:5000/api';
+const API_URL = process.env.REACT_APP_API_BASE_URL;
 
 
   

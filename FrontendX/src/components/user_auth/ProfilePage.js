@@ -21,7 +21,7 @@ const ProfilePage = ({ onUpdateProfile }) => {
       const token = localStorage.getItem('token');
 
       try {
-        const response = await axios.get('http://localhost:5000/api/user/profile', {
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/user/profile`, {
           headers: { Authorization: `${token}`,
           'X-Device-Id': localStorage.getItem('deviceId')
 
@@ -56,7 +56,7 @@ const ProfilePage = ({ onUpdateProfile }) => {
   
     try {
       const response = await axios.put(
-        'http://localhost:5000/api/user/profile',
+        `${process.env.REACT_APP_API_BASE_URL}/user/profile`,
         formData, // ✅ send form data as the body
         {
           headers: { Authorization: `${token}` },

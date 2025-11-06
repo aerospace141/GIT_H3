@@ -147,7 +147,7 @@ const StudentRegistration = ({ onClose, onStudentCreated }) => {
       const token = localStorage.getItem('token');
       const deviceId = localStorage.getItem('deviceId');
       
-      const response = await fetch('http://localhost:5000/api/admin/students', {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/admin/students`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

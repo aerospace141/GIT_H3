@@ -8,14 +8,15 @@ const axios = require('axios');
 router.post('/signup', async (req, res) => {
   try {
       const { firstName, lastName, email, mobileNumber, password, username, userId ,token} = req.body;
-      const hcaptchaSecret = "ES_27c00e50a47c4e369620736c5f0557a9"; // replace with your secret key
+      const HCAPTCHA_SECRET = process.env.HCAPTCHA_SECRET;
       
+// Update in the verification
       const hcaptchaResponse = await axios.post(
         "https://hcaptcha.com/siteverify",
         null,
         {
           params: {
-            secret: hcaptchaSecret,
+            secret: HCAPTCHA_SECRET,  // Changed from hcaptchaSecret
             response: token,
           },
         }

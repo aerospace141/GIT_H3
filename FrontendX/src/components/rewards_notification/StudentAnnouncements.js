@@ -9,7 +9,7 @@ const StudentAnnouncements = () => {
   const [stats, setStats] = useState({ totalCount: 0, unreadCount: 0 });
   const [announcementStats, setAnnouncementStats] = useState({ unreadCount: 0 });
 
-  const API_URL = 'http://localhost:5000/api';
+  const API_URL = process.env.REACT_APP_API_BASE_URL;
 
   useEffect(() => {
     fetchAnnouncements();

@@ -8,16 +8,16 @@ const mongoose = require('mongoose');
 const app = express();
 
 
-// Middleware
-app.use(cors());
-app.use(bodyParser.json({ limit: '10mb' })); // ✅ Increased limit for large submissions
-// app.use(cors({
-//   origin: ['https://avacus.vercel.app', 'https://abacusz.web.app'],
-//   credentials: true
-// }));
+// Environment variables
+const MONGODB_URI = process.env.MONGODB_URI;
+const CORS_ORIGINS = process.env.CORS_ORIGINS ? process.env.CORS_ORIGINS.split(',') : ['http://localhost:3000'];
 
+// Middleware
+app.use(bodyParser.json({ limit: '10mb' }));
+
+// CORS Configuration from environment
 app.use(cors({
-  origin: ['https://avacus.vercel.app', 'https://abacusz.web.app', 'http://localhost:3000'],
+  origin: CORS_ORIGINS,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Device-Id']
@@ -45,14 +45,13 @@ app.use('/api', require('./Routes/SetUp_State/studentAnnouncements'));
 app.use('/api/admin', require('./Routes/admin/createSTU'));
 
 
-const mongoURI = process.env.MONGODB_URI || "mongodb+srv://ayush1777:agr11@cluster0.0128p.mongodb.net/abecus";
-
+// MongoDB Connection
 mongoose
-  .connect(mongoURI, { useNewUrlParser: true })
-  .then(() => console.log('Connected to MongoDB using Mongoose 8.2.1'))
+  .connect(MONGODB_URI, { useNewUrlParser: true })
+  .then(() => console.log('Connected to MongoDB using Mongoose'))
   .catch((err) => console.error('Connection error:', err));
   
-  const db = mongoose.connection;
+const db = mongoose.connection;
 db.once('open', () => {
   console.log('Connected to MongoDB');
 });

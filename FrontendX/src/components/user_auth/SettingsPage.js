@@ -20,7 +20,7 @@ const SettingsPage = ({ userData, onLogout, onPasswordChange, onAccountDelete })
   const [ Role, SetRole] = useState('');
   const [showStreaks, setShowStreaks] = useState(true);
   const [autoPlayNext, setAutoPlayNext] = useState(false);
-  const API_URL = 'http://localhost:5000/api';
+  const API_URL = process.env.REACT_APP_API_BASE_URL;
   
     const handleAccountDelete = async () => {   
        const token = localStorage.getItem('token'); // Retrieve token from local storage
@@ -28,7 +28,7 @@ const SettingsPage = ({ userData, onLogout, onPasswordChange, onAccountDelete })
 
       try {
         // Step 1: Verify user identity
-        const verifyResponse = await fetch('http://localhost:5000/api/users/delete/verify', {
+        const verifyResponse = await fetch(`${process.env.REACT_APP_API_BASE_URL}/users/delete/verify`, {
           method: 'POST',
           headers: {
             Authorization: `${token}`,
@@ -43,7 +43,7 @@ const SettingsPage = ({ userData, onLogout, onPasswordChange, onAccountDelete })
         }
   
         // Step 2: Proceed with account deletion
-        const deleteResponse = await fetch('http://localhost:5000/api/users/delete', {
+        const deleteResponse = await fetch(`${process.env.REACT_APP_API_BASE_URL}/users/delete`, {
           method: 'DELETE',
           headers: {
             Authorization: `${token}`,

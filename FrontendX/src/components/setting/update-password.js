@@ -53,7 +53,7 @@ const SecurePasswordUpdate = () => {
       const token = localStorage.getItem('token');
       const deviceId = localStorage.getItem('deviceId');
       await axios.post(
-        'http://localhost:5000/api/user/update-password',
+        `${process.env.REACT_APP_API_BASE_URL}/user/update-password`,
         { userId, currentPassword, newPassword },
         {       headers: { Authorization: `${token}`,
       'X-Device-Id': deviceId } }

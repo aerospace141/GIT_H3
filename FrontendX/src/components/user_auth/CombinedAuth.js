@@ -130,7 +130,7 @@ const CombinedAuth = () => {
     if (enteredOtp === generatedOtp) {
       setVerified(true);
       try {
-        const response = await axios.post("http://localhost:5000/api/signup", {
+        const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/signup`, {
           ...formData,
           userId: `${formData.firstName}${formData.lastName}${Math.floor(100 + Math.random() * 900)}`.toLowerCase(),
           token,

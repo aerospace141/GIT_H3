@@ -7,7 +7,7 @@ const StudentRewards = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const API_URL = 'http://localhost:5000/api';
+  const API_URL = process.env.REACT_APP_API_BASE_URL;
 
   useEffect(() => {
     fetchUserData();

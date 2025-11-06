@@ -29,7 +29,7 @@ const deviceId = localStorage.getItem('deviceId');
 
         console.log('Validating session with token:', token);
         
-        const response = await axios.get('http://localhost:5000/api/session-status', {
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/session-status`, {
       headers: { Authorization: `${token}`,
       'X-Device-Id': deviceId }
     });
@@ -84,7 +84,7 @@ const deviceId = localStorage.getItem('deviceId');
           const token = localStorage.getItem('token');
           const deviceId = localStorage.getItem('deviceId');
 
-        await axios.get('http://localhost:5000/api/session-status', {
+        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/session-status`, {
       headers: { Authorization: `${token}`,
       'X-Device-Id': deviceId }
     });

@@ -32,8 +32,7 @@ export default function App() {
         {/* Public Routes */}
         {/* <Route path="/signup" element={<SignUp />} /> */}
         <Route path="/signin" element={
-            <GoogleOAuthProvider clientId="679832363574-9don8skic3d6n3r8geli6ippcbrip1pe.apps.googleusercontent.com">
-              <SignIn />
+            <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>              <SignIn />
             </GoogleOAuthProvider>
 
           } />
@@ -109,8 +108,7 @@ export default function App() {
         path="/gl"
         element={
           // <PrivateRoute>      
-        <GoogleOAuthProvider clientId="679832363574-9don8skic3d6n3r8geli6ippcbrip1pe.apps.googleusercontent.com">
-
+<GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
 
             <GL  />
                   </GoogleOAuthProvider>

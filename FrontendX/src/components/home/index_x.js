@@ -540,7 +540,7 @@ const checkSubtractionAnswer = () => {
 
   
   setResult(resultData);
-  updatePerformanceData(correct, score);
+  // updatePerformanceData(correct, score);
   setAppState('result');
 };
 
@@ -2425,7 +2425,7 @@ updatePerformanceData(correct, score, null, {
 });
   
   setResult(resultData);
-  updatePerformanceData(correct, score);
+  // updatePerformanceData(correct, score);
   setAppState('result');
 };
 
@@ -2553,7 +2553,7 @@ const checkAdditionAnswer = () => {
 });
   
   setResult(resultData);
-  updatePerformanceData(correct, score);
+  // updatePerformanceData(correct, score);
   setAppState('result');
 };
 
@@ -3324,7 +3324,7 @@ const checkAllAnswers = (answers) => {
   console.log('Setting final result data:', resultData);
   
   // Update performance data
-  updatePerformanceData(isCorrect, score);
+  // updatePerformanceData(isCorrect, score);
 
   updatePerformanceData(isCorrect, score, null, {
   totalQuestions: expectedCount,

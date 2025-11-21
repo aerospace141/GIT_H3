@@ -37,6 +37,36 @@ router.get('/performance/:userId', authenticateUser, async (req, res) => {
       res.status(500).json({ message: 'Server error' });
     }
   });
+
+    router.get('/admin/performance/:userId', async (req, res) => {
+    // Make sure user can only access their own data
+    // if (req.userId !== req.params.userId) {
+    //   return res.status(403).json({ message: 'Not authorized to access this data' });
+    // }
+  
+    try {
+      let performance = await Performance.find({ userId: req.params.userId });
+      
+      if (!performance) {
+        // Create new performance record if none exists
+        performance = new Performance({
+          userId: req.params.userId,
+          totalGames: 0,
+          totalCorrect: 0,
+          totalScore: 0,
+          gameTypes: {},
+          dailyStats: {},
+          history: []
+        });
+        await performance.save();
+      }
+      
+      res.json(performance);
+    } catch (err) {
+      console.error('Get performance error:', err);
+      res.status(500).json({ message: 'Server error' });
+    }
+  });
   
   router.post('/performance/:userId', authenticateUser, async (req, res) => {
     // Make sure user can only update their own data

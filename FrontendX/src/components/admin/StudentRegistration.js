@@ -195,7 +195,7 @@ const StudentRegistration = ({ onClose, onStudentCreated }) => {
   const copyCredentials = async () => {
     if (!createdStudent) return;
     
-    const credentials = `Student Login Credentials\n\nName: ${createdStudent.name}\nStudent ID: ${createdStudent.studentId}\nEmail: ${createdStudent.email}\nPassword: ${createdStudent.password}\n\nLogin URL: ${window.location.origin}/login`;
+    const credentials = `Student Login Credentials\n\nName: ${createdStudent.name}\nStudent ID: ${createdStudent.studentId}\nEmail: ${createdStudent.email}\nPassword: ${createdStudent.password}\n\nLogin URL: ${window.location.origin}/signin`;
     
     try {
       await navigator.clipboard.writeText(credentials);

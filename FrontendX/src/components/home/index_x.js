@@ -791,68 +791,122 @@ const autoSubmitWithCapturedState = () => {
 //   }
 // };   10-09
 
+const audioCtxRef = React.useRef(null);
+
+useEffect(() => {
+  audioCtxRef.current = new (window.AudioContext || window.webkitAudioContext)();
+  
+  return () => {
+    audioCtxRef.current?.close();
+  };
+}, []);
+
+
 // Enhanced beep sound function with different types
+// const playBeep = (type = 'normal') => {
+//   try {
+//     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+//     const oscillator = audioContext.createOscillator();
+//     const gainNode = audioContext.createGain();
+    
+//     oscillator.connect(gainNode);
+//     gainNode.connect(audioContext.destination);
+    
+//     // Different beep types
+//     switch(type) {
+//       case 'normal':
+//         oscillator.frequency.setValueAtTime(600, audioContext.currentTime);
+//         gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+//         gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
+//         oscillator.start(audioContext.currentTime);
+//         oscillator.stop(audioContext.currentTime + 0.2);
+//         break;
+        
+//       case 'warning':
+//         oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+//         gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+//         gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.15);
+//         oscillator.start(audioContext.currentTime);
+//         oscillator.stop(audioContext.currentTime + 0.15);
+//         break;
+        
+//       case 'urgent':
+//         // Double beep for urgency
+//         oscillator.frequency.setValueAtTime(1000, audioContext.currentTime);
+//         gainNode.gain.setValueAtTime(0.4, audioContext.currentTime);
+//         gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+//         oscillator.start(audioContext.currentTime);
+//         oscillator.stop(audioContext.currentTime + 0.1);
+        
+//         // Second beep
+//         setTimeout(() => {
+//           const oscillator2 = audioContext.createOscillator();
+//           const gainNode2 = audioContext.createGain();
+//           oscillator2.connect(gainNode2);
+//           gainNode2.connect(audioContext.destination);
+//           oscillator2.frequency.setValueAtTime(1000, audioContext.currentTime);
+//           gainNode2.gain.setValueAtTime(0.4, audioContext.currentTime);
+//           gainNode2.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+//           oscillator2.start(audioContext.currentTime);
+//           oscillator2.stop(audioContext.currentTime + 0.1);
+//         }, 150);
+//         break;
+        
+//       case 'final':
+//         oscillator.frequency.setValueAtTime(1200, audioContext.currentTime);
+//         gainNode.gain.setValueAtTime(0.5, audioContext.currentTime);
+//         gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.8);
+//         oscillator.start(audioContext.currentTime);
+//         oscillator.stop(audioContext.currentTime + 0.8);
+//         break;
+//     }
+//   } catch (error) {
+//     console.log('Beep sound not supported');
+//   }
+// };
+
 const playBeep = (type = 'normal') => {
   try {
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const audioContext = audioCtxRef.current;
+    if (!audioContext) return;
+
+    // Resume if suspended (VERY IMPORTANT)
+    if (audioContext.state === 'suspended') {
+      audioContext.resume();
+    }
+
     const oscillator = audioContext.createOscillator();
     const gainNode = audioContext.createGain();
-    
+
     oscillator.connect(gainNode);
     gainNode.connect(audioContext.destination);
-    
-    // Different beep types
-    switch(type) {
-      case 'normal':
-        oscillator.frequency.setValueAtTime(600, audioContext.currentTime);
-        gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
-        oscillator.start(audioContext.currentTime);
-        oscillator.stop(audioContext.currentTime + 0.2);
-        break;
-        
-      case 'warning':
-        oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
-        gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.15);
-        oscillator.start(audioContext.currentTime);
-        oscillator.stop(audioContext.currentTime + 0.15);
-        break;
-        
-      case 'urgent':
-        // Double beep for urgency
-        oscillator.frequency.setValueAtTime(1000, audioContext.currentTime);
-        gainNode.gain.setValueAtTime(0.4, audioContext.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
-        oscillator.start(audioContext.currentTime);
-        oscillator.stop(audioContext.currentTime + 0.1);
-        
-        // Second beep
-        setTimeout(() => {
-          const oscillator2 = audioContext.createOscillator();
-          const gainNode2 = audioContext.createGain();
-          oscillator2.connect(gainNode2);
-          gainNode2.connect(audioContext.destination);
-          oscillator2.frequency.setValueAtTime(1000, audioContext.currentTime);
-          gainNode2.gain.setValueAtTime(0.4, audioContext.currentTime);
-          gainNode2.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
-          oscillator2.start(audioContext.currentTime);
-          oscillator2.stop(audioContext.currentTime + 0.1);
-        }, 150);
-        break;
-        
-      case 'final':
-        oscillator.frequency.setValueAtTime(1200, audioContext.currentTime);
-        gainNode.gain.setValueAtTime(0.5, audioContext.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.8);
-        oscillator.start(audioContext.currentTime);
-        oscillator.stop(audioContext.currentTime + 0.8);
-        break;
+
+    let freq = 600;
+    let duration = 0.2;
+    let volume = 0.2;
+
+    if (type === 'warning') freq = 800;
+    if (type === 'urgent') freq = 1000;
+    if (type === 'final') {
+      freq = 1200;
+      duration = 0.6;
+      volume = 0.4;
     }
-  } catch (error) {
-    console.log('Beep sound not supported');
+
+    oscillator.frequency.value = freq;
+    gainNode.gain.setValueAtTime(volume, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(
+      0.01,
+      audioContext.currentTime + duration
+    );
+
+    oscillator.start();
+    oscillator.stop(audioContext.currentTime + duration);
+  } catch (err) {
+    console.log('Beep failed:', err);
   }
 };
+
 
 // 2. REPLACE startAdditionIntervalDisplay function
 const startAdditionIntervalDisplay = (nums) => {

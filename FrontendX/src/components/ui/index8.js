@@ -4765,7 +4765,7 @@ const resetGame = () => {
       <div className="avc-flex avc-items-center">
         {userId ? (
           <div className="avc-text-sm avc-text-green-600 avc-mr-4">
-            ✓ Data syncing to account
+            ✓ Data syncing to account <strong>19.01.26</strong>
           </div>
         ) : (
           <a href="/login" className="avc-bg-green-500 avc-text-white avc-py-1 avc-px-3 avc-rounded avc-hover:bg-green-600 avc-text-sm avc-mr-2">
@@ -4781,7 +4781,7 @@ const renderSetup = () => (
     <div className="avc-page-background">
       <div className="avc-setup-container">
         <h1 className="avc-title">
-          Avecus Learning App
+          Avecus Learning App   
         </h1>
 
         <div className="avc-login-section">
